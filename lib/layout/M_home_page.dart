@@ -39,84 +39,86 @@ class _MobileHomePageState extends State<MobileHomePage> {
               fontWeight: FontWeight.w500, fontSize: 27, color: Colors.black),
         ),
         // centerTitle: true,
-        iconTheme: IconThemeData(color: Colors.black),
         leading: IconButton(
-              onPressed: () {
-                // Navigator.of(context).push(
-                //   PageRouteBuilder(
-                //     pageBuilder: (context, animation, secondaryAnimation) {
-                //       return MobileContactPage();
-                //     },
-                //     transitionDuration: Duration(seconds: 3),
-                //     reverseTransitionDuration: Duration(seconds: 3),
-                //     transitionsBuilder:
-                //         (context, animation, secondaryAnimation, child) {
-                //       final color = ColorTween(
-                //         begin: Colors.transparent,
-                //         end: Colors.black, // ブラックアウト
-                //         // end: Colors.white, // ホワイトアウト
-                //       ).animate(CurvedAnimation(
-                //         parent: animation,
-                //         // 前半
-                //         curve: Interval(
-                //           0.0,
-                //           0.5,
-                //           curve: Curves.easeInOut,
-                //         ),
-                //       ));
-                //       final opacity = Tween<double>(
-                //         begin: 0.0,
-                //         end: 1.0,
-                //       ).animate(CurvedAnimation(
-                //         parent: animation,
-                //         // 後半
-                //         curve: Interval(
-                //           0.5,
-                //           1.0,
-                //           curve: Curves.easeInOut,
-                //         ),
-                //       ));
-                //       return AnimatedBuilder(
-                //         animation: animation,
-                //         builder: (context, child) {
-                //           return Container(
-                //             color: color.value,
-                //             child: Opacity(
-                //               opacity: opacity.value,
-                //               child: child,
-                //             ),
-                //           );
-                //         },
-                //         child: child,
-                //       );
-                //     },
-                //   ),
-                // );
-              },
-              icon: Icon(
-                Icons.mail,
-                size: 35,
+          onPressed: () {
+            Navigator.of(context).push(
+              PageRouteBuilder(
+                pageBuilder: (context, animation, secondaryAnimation) {
+                  return MobileContactPage();
+                },
+                transitionDuration: Duration(seconds: 3),
+                reverseTransitionDuration: Duration(seconds: 3),
+                transitionsBuilder:
+                    (context, animation, secondaryAnimation, child) {
+                  final color = ColorTween(
+                    begin: Colors.transparent,
+                    end: Colors.black, // ブラックアウト
+                    // end: Colors.white, // ホワイトアウト
+                  ).animate(CurvedAnimation(
+                    parent: animation,
+                    // 前半
+                    curve: Interval(
+                      0.0,
+                      0.5,
+                      curve: Curves.easeInOut,
+                    ),
+                  ));
+                  final opacity = Tween<double>(
+                    begin: 0.0,
+                    end: 1.0,
+                  ).animate(CurvedAnimation(
+                    parent: animation,
+                    // 後半
+                    curve: Interval(
+                      0.5,
+                      1.0,
+                      curve: Curves.easeInOut,
+                    ),
+                  ));
+                  return AnimatedBuilder(
+                    animation: animation,
+                    builder: (context, child) {
+                      return Container(
+                        color: color.value,
+                        child: Opacity(
+                          opacity: opacity.value,
+                          child: child,
+                        ),
+                      );
+                    },
+                    child: child,
+                  );
+                },
               ),
+            );
+          },
+          icon: Icon(
+            Icons.mail,
+            size: 35,
+          ),
         ),
-        actions: [GestureDetector(
-                onTap: () {
-                  GithubURL();
-                },
-                child: Image.asset('assets/app/github_icon.png'),
-          ), GestureDetector(
-                onTap: () {
-                  storeAppleURL();
-                },
-                child: Image.asset('assets/app/apple_store_icon.png'),
-          ), GestureDetector(
-                onTap: () {
-                  storeAndroidURL();
-                },
-                child: Image.asset('assets/app/play_storeicon.png'),
+        actions: [
+          GestureDetector(
+            onTap: () {
+              GithubURL();
+            },
+            child: Image.asset('assets/app/github_icon.png'),
+          ),
+          GestureDetector(
+            onTap: () {
+              storeAppleURL();
+            },
+            child: Image.asset('assets/app/apple_store_icon.png'),
+          ),
+          GestureDetector(
+            onTap: () {
+              storeAndroidURL();
+            },
+            child: Image.asset('assets/app/play_storeicon.png'),
           ),
         ],
       ),
-      
+
       // body: SafeArea(
       //   child: Padding(
       //     padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -137,7 +139,7 @@ class _MobileHomePageState extends State<MobileHomePage> {
       //                     "assets/app/firebase_icon.png"),
       //               ],
       //             ),
-                
+
       //           const SizedBox(
       //             height: 12,
       //           ),
