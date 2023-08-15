@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../pages/mobile/M_contact_page.dart';
+import '../pages/mobile/M_developer_page.dart';
+import '../pages/mobile/M_policy_page.dart';
+import '../pages/mobile/M_product_page.dart';
 import '../utils.dart';
 
 class Wrapper extends StatelessWidget {
@@ -131,6 +134,218 @@ class _TestState extends State<Test> {
           ),
         ],
       ),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                //Services
+                buildBigTitle("Services"),
+                const SizedBox(
+                  height: 12,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    buildSkillCard("Flutter", "モバイルアプリやWebサイトの開発に用います。",
+                        "assets/app/flutter_icon.png"),
+                    buildSkillCard("Firebase", "ログイン機能や画像、動画の保存に用います。",
+                        "assets/app/firebase_icon.png"),
+                  ],
+                ),
+
+                const SizedBox(
+                  height: 12,
+                ),
+                // buildSkillCard_Large(),
+
+                buildDivider(),
+
+                //Products
+                buildBigTitle("Products"),
+
+                const SizedBox(
+                  height: 12,
+                ),
+
+                MobileProductPage(deviceWidth),
+
+                //About me
+                buildBigTitle("About Me"),
+
+                const SizedBox(
+                  height: 12,
+                ),
+
+                MobileAboutmePage(),
+
+                buildDivider(),
+
+                //Policy
+                buildBigTitle("Policy"),
+
+                const SizedBox(
+                  height: 12,
+                ),
+
+                MobilePolicyPage(
+                    isJP: isJP,
+                    deviceWidth: deviceWidth,
+                    deviceHeight: deviceHeight),
+
+                const SizedBox(
+                  height: 30,
+                ),
+
+                Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    "(c) 2021 Mizuno Hikaru",
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: Colors.black.withOpacity(0.5),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(
+                  height: 20,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
+  }
+
+  Card buildSkillCard(String title, String description, String imagePath) {
+    return Card(
+      elevation: 10.0,
+      child: Container(
+        height: 180,
+        width: deviceWidth / 2.7,
+        margin: const EdgeInsets.all(10.0),
+        // decoration: BoxDecoration(
+        //   borderRadius: BorderRadius.circular(10),
+        //   color: const Color.fromARGB(255, 165, 165, 165),
+        // ),
+        child: Column(
+          children: [
+            SizedBox(
+              height: deviceWidth * 0.007,
+            ),
+            Text(
+              title,
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
+            ),
+            Text(
+              description,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontSize: 14,
+              ),
+            ),
+            const Spacer(),
+            Image.asset(
+              imagePath,
+              filterQuality: FilterQuality.medium,
+              fit: BoxFit.contain,
+              width: 80,
+              height: 80,
+            ),
+            const Spacer(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // FadeAnimation buildSkillCard_Large() {
+  //   return FadeAnimation(
+  //     delay: 1.6,
+  //     child: Card(
+  //       elevation: 10.0,
+  //       child: Container(
+  //         height: 180,
+  //         width: deviceWidth,
+  //         margin: const EdgeInsets.all(10.0),
+  //         child: Row(
+  //           children: [
+  //             Container(
+  //               height: 180,
+  //               width: deviceWidth / 1.7,
+  //               child: const Column(
+  //                 children: [
+  //                   Text(
+  //                     "Unity",
+  //                     textAlign: TextAlign.center,
+  //                     style:
+  //                         TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
+  //                   ),
+  //                   Text(
+  //                     "・オンラインFPSゲーム・3人称RPGゲーム・ARゲーム・2Dハイカジュなどの幅広いジャンルに対応して、開発ができます。",
+  //                     textAlign: TextAlign.center,
+  //                     style: TextStyle(
+  //                       fontSize: 14,
+  //                     ),
+  //                   ),
+  //                 ],
+  //               ),
+  //             ),
+  //             Image.asset(
+  //               "assets/app/unity_icon.png",
+  //               filterQuality: FilterQuality.medium,
+  //               fit: BoxFit.contain,
+  //               width: deviceWidth * 0.15,
+  //             ),
+  //           ],
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
+
+  Divider buildDivider() {
+    return Divider(
+      color: Colors.black45,
+      thickness: 0.5,
+      height: 50,
+      indent: 0,
+      endIndent: 0,
+    );
+  }
+
+  Container buildBigTitle(String title) {
+    return Container(
+        width: double.infinity,
+        height: 100,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Stack(
+              alignment: AlignmentDirectional.bottomStart,
+              children: [
+                Text(
+                  title,
+                  style: TextStyle(
+                      fontSize: 57,
+                      fontWeight: FontWeight.w600,
+                      color: Color.fromARGB(43, 235, 192, 255)),
+                ),
+                Text(
+                  title,
+                  style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.w600,
+                      color: Color.fromARGB(255, 86, 86, 86)),
+                ),
+              ],
+            ),
+          ],
+        ));
   }
 }
