@@ -117,89 +117,89 @@ class _MobileHomePageState extends State<MobileHomePage> {
         ],
       ),
       
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                //Services
-                buildBigTitle("Services"),
-                const SizedBox(
-                  height: 12,
-                ),Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      buildSkillCard("Flutter", "モバイルアプリやWebサイトの開発に用います。",
-                          "assets/app/flutter_icon.png"),
-                      buildSkillCard("Firebase", "ログイン機能や画像、動画の保存に用います。",
-                          "assets/app/firebase_icon.png"),
-                    ],
-                  ),
+      // body: SafeArea(
+      //   child: Padding(
+      //     padding: const EdgeInsets.symmetric(horizontal: 12),
+      //     child: SingleChildScrollView(
+      //       child: Column(
+      //         crossAxisAlignment: CrossAxisAlignment.center,
+      //         children: [
+      //           //Services
+      //           buildBigTitle("Services"),
+      //           const SizedBox(
+      //             height: 12,
+      //           ),Row(
+      //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //               children: [
+      //                 buildSkillCard("Flutter", "モバイルアプリやWebサイトの開発に用います。",
+      //                     "assets/app/flutter_icon.png"),
+      //                 buildSkillCard("Firebase", "ログイン機能や画像、動画の保存に用います。",
+      //                     "assets/app/firebase_icon.png"),
+      //               ],
+      //             ),
                 
-                const SizedBox(
-                  height: 12,
-                ),
-                // buildSkillCard_Large(),
+      //           const SizedBox(
+      //             height: 12,
+      //           ),
+      //           // buildSkillCard_Large(),
 
-                buildDivider(),
+      //           buildDivider(),
 
-                //Products
-                buildBigTitle("Products"),
+      //           //Products
+      //           buildBigTitle("Products"),
 
-                const SizedBox(
-                  height: 12,
-                ),
+      //           const SizedBox(
+      //             height: 12,
+      //           ),
 
-                MobileProductPage(deviceWidth),
+      //           MobileProductPage(deviceWidth),
 
-                //About me
-                buildBigTitle("About Me"),
+      //           //About me
+      //           buildBigTitle("About Me"),
 
-                const SizedBox(
-                  height: 12,
-                ),
+      //           const SizedBox(
+      //             height: 12,
+      //           ),
 
-                MobileAboutmePage(),
+      //           MobileAboutmePage(),
 
-                buildDivider(),
+      //           buildDivider(),
 
-                //Policy
-                buildBigTitle("Policy"),
+      //           //Policy
+      //           buildBigTitle("Policy"),
 
-                const SizedBox(
-                  height: 12,
-                ),
+      //           const SizedBox(
+      //             height: 12,
+      //           ),
 
-                MobilePolicyPage(
-                    isJP: isJP,
-                    deviceWidth: deviceWidth,
-                    deviceHeight: deviceHeight),
+      //           MobilePolicyPage(
+      //               isJP: isJP,
+      //               deviceWidth: deviceWidth,
+      //               deviceHeight: deviceHeight),
 
-                const SizedBox(
-                  height: 30,
-                ),
+      //           const SizedBox(
+      //             height: 30,
+      //           ),
 
-                Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    "(c) 2021 Mizuno Hikaru",
-                    style: TextStyle(
-                      fontSize: 13,
-                      color: Colors.black.withOpacity(0.5),
-                    ),
-                  ),
-                ),
+      //           Align(
+      //             alignment: Alignment.center,
+      //             child: Text(
+      //               "(c) 2021 Mizuno Hikaru",
+      //               style: TextStyle(
+      //                 fontSize: 13,
+      //                 color: Colors.black.withOpacity(0.5),
+      //               ),
+      //             ),
+      //           ),
 
-                const SizedBox(
-                  height: 20,
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
+      //           const SizedBox(
+      //             height: 20,
+      //           ),
+      //         ],
+      //       ),
+      //     ),
+      //   ),
+      // ),
     );
   }
 
