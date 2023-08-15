@@ -14,10 +14,21 @@ class Wrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     return SelectionArea(
       child: LayoutBuilder(builder: (context, constraints) {
-        return isDesktopScreen(context)
-            ? const MobileHomePage()
-            : const MobileHomePage();
+        return isDesktopScreen(context) ? Test() : Test();
       }),
+    );
+  }
+}
+
+class Test extends StatelessWidget {
+  const Test({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("heel"),
+      ),
     );
   }
 }
