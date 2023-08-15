@@ -28,9 +28,7 @@ class _MobileProductPageState extends State<MobileProductPage> {
             ),
             Positioned(
               bottom: 60,
-              child: FadeAnimation(
-                delay: 1.6,
-                child: Row(
+              child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     buildStoreButton(
@@ -39,7 +37,6 @@ class _MobileProductPageState extends State<MobileProductPage> {
                         "assets/app/play_store.png", escTerausaAndroidURL),
                   ],
                 ),
-              ),
             ),
           ],
         ),
