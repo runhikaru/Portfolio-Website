@@ -19,7 +19,20 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'ポートフォリオ',
-      home: Wrapper(),
+      home: TEST(),
+    );
+  }
+}
+
+class TEST extends StatelessWidget {
+  const TEST({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Hello"),
+      ),
     );
   }
 }
