@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_website/layout/D_home_page.dart';
-
-import '../utils.dart';
-import '../widget/fade_animation.dart';
 
 class Wrapper extends StatelessWidget {
   const Wrapper({super.key});
@@ -36,10 +32,6 @@ class Test extends StatelessWidget {
           style: TextStyle(
               fontWeight: FontWeight.w500, fontSize: 27, color: Colors.black),
         ),
-        // centerTitle: true,
-        iconTheme: IconThemeData(color: Colors.black),
-        
-        
       ),
     );
   }
