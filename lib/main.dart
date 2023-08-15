@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:portfolio_website/layout/wrapper.dart';
+// import 'package:portfolio_website/layout/wrapper.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
