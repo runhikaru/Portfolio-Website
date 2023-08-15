@@ -15,7 +15,7 @@ class Wrapper extends StatelessWidget {
     return SelectionArea(
       child: LayoutBuilder(builder: (context, constraints) {
         return isDesktopScreen(context)
-            ? const DesktopHomePage()
+            ? const MobileHomePage()
             : const MobileHomePage();
       }),
     );
