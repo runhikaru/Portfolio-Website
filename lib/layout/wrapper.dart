@@ -48,32 +48,7 @@ class Test extends StatelessWidget {
                 size: 35,
               )),
         ),
-        actions: [
-          FadeAnimation(
-            delay: 0.8,
-            child: GestureDetector(
-                onTap: () {
-                  GithubURL();
-                },
-                child: Image.asset('assets/app/github_icon.png')),
-          ),
-          FadeAnimation(
-            delay: 1,
-            child: GestureDetector(
-                onTap: () {
-                  storeAppleURL();
-                },
-                child: Image.asset('assets/app/apple_store_icon.png')),
-          ),
-          FadeAnimation(
-            delay: 1.2,
-            child: GestureDetector(
-                onTap: () {
-                  storeAndroidURL();
-                },
-                child: Image.asset('assets/app/play_storeicon.png')),
-          ),
-        ],
+        
       ),
     );
   }
