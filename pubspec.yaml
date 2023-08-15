@@ -41,8 +41,11 @@ dependencies:
   # NetWork
   url_launcher:
   http:
-  sprung:
-  supercharged:
+  
+  sprung: ^3.0.1
+
+  simple_animations: ^4.0.1
+  supercharged: ^2.1.1
 
 dev_dependencies:
   flutter_test:

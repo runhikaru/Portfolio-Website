@@ -6,7 +6,7 @@ import '../pages/mobile/M_developer_page.dart';
 import '../pages/mobile/M_policy_page.dart';
 import '../pages/mobile/M_product_page.dart';
 import '../utils.dart';
-// import '../widget/fade_animation.dart';
+import '../widget/fade_animation.dart';
 
 class MobileHomePage extends StatefulWidget {
   const MobileHomePage({super.key});
@@ -37,6 +37,9 @@ class _MobileHomePageState extends State<MobileHomePage> {
           "Mizuno Hikaru",
           style: TextStyle(
               fontWeight: FontWeight.w500, fontSize: 27, color: Colors.black),
+        ),
+        iconTheme: IconThemeData(
+          color: Colors.black,
         ),
         leading: IconButton(
           onPressed: () {
@@ -97,11 +100,14 @@ class _MobileHomePageState extends State<MobileHomePage> {
           ),
         ),
         actions: [
-          GestureDetector(
-            onTap: () {
-              GithubURL();
-            },
-            child: Image.asset('assets/app/github_icon.png'),
+          FadeAnimation(
+            delay: 1,
+            child: GestureDetector(
+              onTap: () {
+                GithubURL();
+              },
+              child: Image.asset('assets/app/github_icon.png'),
+            ),
           ),
           GestureDetector(
             onTap: () {
@@ -117,7 +123,6 @@ class _MobileHomePageState extends State<MobileHomePage> {
           ),
         ],
       ),
-
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -143,7 +148,7 @@ class _MobileHomePageState extends State<MobileHomePage> {
                 const SizedBox(
                   height: 12,
                 ),
-                
+
                 buildSkillCard_Large(),
 
                 buildDivider(),
@@ -251,43 +256,42 @@ class _MobileHomePageState extends State<MobileHomePage> {
 
   Widget buildSkillCard_Large() {
     return Card(
-        elevation: 10.0,
-        child: Container(
-          height: 180,
-          width: deviceWidth,
-          margin: const EdgeInsets.all(10.0),
-          child: Row(
-            children: [
-              Container(
-                height: 180,
-                width: deviceWidth / 1.7,
-                child: const Column(
-                  children: [
-                    Text(
-                      "Unity",
-                      textAlign: TextAlign.center,
-                      style:
-                          TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
+      elevation: 10.0,
+      child: Container(
+        height: 180,
+        width: deviceWidth,
+        margin: const EdgeInsets.all(10.0),
+        child: Row(
+          children: [
+            Container(
+              height: 180,
+              width: deviceWidth / 1.7,
+              child: const Column(
+                children: [
+                  Text(
+                    "Unity",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
+                  ),
+                  Text(
+                    "・オンラインFPSゲーム・3人称RPGゲーム・ARゲーム・2Dハイカジュなどの幅広いジャンルに対応して、開発ができます。",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 14,
                     ),
-                    Text(
-                      "・オンラインFPSゲーム・3人称RPGゲーム・ARゲーム・2Dハイカジュなどの幅広いジャンルに対応して、開発ができます。",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 14,
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              Image.asset(
-                "assets/app/unity_icon.png",
-                filterQuality: FilterQuality.medium,
-                fit: BoxFit.contain,
-                width: deviceWidth * 0.15,
-              ),
-            ],
-          ),
+            ),
+            Image.asset(
+              "assets/app/unity_icon.png",
+              filterQuality: FilterQuality.medium,
+              fit: BoxFit.contain,
+              width: deviceWidth * 0.15,
+            ),
+          ],
         ),
+      ),
     );
   }
 
