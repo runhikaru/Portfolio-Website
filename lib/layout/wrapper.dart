@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../Pages/Mobile/M_contact_page.dart';
+import '../pages/mobile/M_contact_page.dart';
 import '../utils.dart';
 import '../widget/fade_animation.dart';
 
