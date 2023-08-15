@@ -38,16 +38,7 @@ class Test extends StatelessWidget {
         ),
         // centerTitle: true,
         iconTheme: IconThemeData(color: Colors.black),
-        leading: FadeAnimation(
-          delay: 0.8,
-          child: IconButton(
-              onPressed: () {
-              },
-              icon: Icon(
-                Icons.mail,
-                size: 35,
-              )),
-        ),
+        
         
       ),
     );
