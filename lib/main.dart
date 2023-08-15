@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-// import 'package:portfolio_website/layout/wrapper.dart';
+import 'package:portfolio_website/layout/wrapper.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,20 +19,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'ポートフォリオ',
-      home: TEST(),
-    );
-  }
-}
-
-class TEST extends StatelessWidget {
-  const TEST({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Hello"),
-      ),
+      home: Wrapper(),
     );
   }
 }
