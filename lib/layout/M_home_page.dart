@@ -143,7 +143,8 @@ class _MobileHomePageState extends State<MobileHomePage> {
                 const SizedBox(
                   height: 12,
                 ),
-                // buildSkillCard_Large(),
+                
+                buildSkillCard_Large(),
 
                 buildDivider(),
 
@@ -248,50 +249,47 @@ class _MobileHomePageState extends State<MobileHomePage> {
     );
   }
 
-  // FadeAnimation buildSkillCard_Large() {
-  //   return FadeAnimation(
-  //     delay: 1.6,
-  //     child: Card(
-  //       elevation: 10.0,
-  //       child: Container(
-  //         height: 180,
-  //         width: deviceWidth,
-  //         margin: const EdgeInsets.all(10.0),
-  //         child: Row(
-  //           children: [
-  //             Container(
-  //               height: 180,
-  //               width: deviceWidth / 1.7,
-  //               child: const Column(
-  //                 children: [
-  //                   Text(
-  //                     "Unity",
-  //                     textAlign: TextAlign.center,
-  //                     style:
-  //                         TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
-  //                   ),
-  //                   Text(
-  //                     "・オンラインFPSゲーム・3人称RPGゲーム・ARゲーム・2Dハイカジュなどの幅広いジャンルに対応して、開発ができます。",
-  //                     textAlign: TextAlign.center,
-  //                     style: TextStyle(
-  //                       fontSize: 14,
-  //                     ),
-  //                   ),
-  //                 ],
-  //               ),
-  //             ),
-  //             Image.asset(
-  //               "assets/app/unity_icon.png",
-  //               filterQuality: FilterQuality.medium,
-  //               fit: BoxFit.contain,
-  //               width: deviceWidth * 0.15,
-  //             ),
-  //           ],
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
+  Widget buildSkillCard_Large() {
+    return Card(
+        elevation: 10.0,
+        child: Container(
+          height: 180,
+          width: deviceWidth,
+          margin: const EdgeInsets.all(10.0),
+          child: Row(
+            children: [
+              Container(
+                height: 180,
+                width: deviceWidth / 1.7,
+                child: const Column(
+                  children: [
+                    Text(
+                      "Unity",
+                      textAlign: TextAlign.center,
+                      style:
+                          TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
+                    ),
+                    Text(
+                      "・オンラインFPSゲーム・3人称RPGゲーム・ARゲーム・2Dハイカジュなどの幅広いジャンルに対応して、開発ができます。",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 14,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Image.asset(
+                "assets/app/unity_icon.png",
+                filterQuality: FilterQuality.medium,
+                fit: BoxFit.contain,
+                width: deviceWidth * 0.15,
+              ),
+            ],
+          ),
+        ),
+    );
+  }
 
   Divider buildDivider() {
     return Divider(
