@@ -30,178 +30,178 @@ class _MobileHomePageState extends State<MobileHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white60,
-        elevation: 12,
-        title: const Text(
-          "Mizuno Hikaru",
-          style: TextStyle(
-              fontWeight: FontWeight.w500, fontSize: 27, color: Colors.black),
-        ),
-        // centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).push(
-              PageRouteBuilder(
-                pageBuilder: (context, animation, secondaryAnimation) {
-                  return MobileContactPage();
-                },
-                transitionDuration: Duration(seconds: 3),
-                reverseTransitionDuration: Duration(seconds: 3),
-                transitionsBuilder:
-                    (context, animation, secondaryAnimation, child) {
-                  final color = ColorTween(
-                    begin: Colors.transparent,
-                    end: Colors.black, // ブラックアウト
-                    // end: Colors.white, // ホワイトアウト
-                  ).animate(CurvedAnimation(
-                    parent: animation,
-                    // 前半
-                    curve: Interval(
-                      0.0,
-                      0.5,
-                      curve: Curves.easeInOut,
-                    ),
-                  ));
-                  final opacity = Tween<double>(
-                    begin: 0.0,
-                    end: 1.0,
-                  ).animate(CurvedAnimation(
-                    parent: animation,
-                    // 後半
-                    curve: Interval(
-                      0.5,
-                      1.0,
-                      curve: Curves.easeInOut,
-                    ),
-                  ));
-                  return AnimatedBuilder(
-                    animation: animation,
-                    builder: (context, child) {
-                      return Container(
-                        color: color.value,
-                        child: Opacity(
-                          opacity: opacity.value,
-                          child: child,
-                        ),
-                      );
-                    },
-                    child: child,
-                  );
-                },
-              ),
-            );
-          },
-          icon: Icon(
-            Icons.mail,
-            size: 35,
-          ),
-        ),
-        actions: [
-          GestureDetector(
-            onTap: () {
-              GithubURL();
-            },
-            child: Image.asset('assets/app/github_icon.png'),
-          ),
-          GestureDetector(
-            onTap: () {
-              storeAppleURL();
-            },
-            child: Image.asset('assets/app/apple_store_icon.png'),
-          ),
-          GestureDetector(
-            onTap: () {
-              storeAndroidURL();
-            },
-            child: Image.asset('assets/app/play_storeicon.png'),
-          ),
-        ],
-      ),
-
-      // body: SafeArea(
-      //   child: Padding(
-      //     padding: const EdgeInsets.symmetric(horizontal: 12),
-      //     child: SingleChildScrollView(
-      //       child: Column(
-      //         crossAxisAlignment: CrossAxisAlignment.center,
-      //         children: [
-      //           //Services
-      //           buildBigTitle("Services"),
-      //           const SizedBox(
-      //             height: 12,
-      //           ),Row(
-      //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //               children: [
-      //                 buildSkillCard("Flutter", "モバイルアプリやWebサイトの開発に用います。",
-      //                     "assets/app/flutter_icon.png"),
-      //                 buildSkillCard("Firebase", "ログイン機能や画像、動画の保存に用います。",
-      //                     "assets/app/firebase_icon.png"),
-      //               ],
-      //             ),
-
-      //           const SizedBox(
-      //             height: 12,
-      //           ),
-      //           // buildSkillCard_Large(),
-
-      //           buildDivider(),
-
-      //           //Products
-      //           buildBigTitle("Products"),
-
-      //           const SizedBox(
-      //             height: 12,
-      //           ),
-
-      //           MobileProductPage(deviceWidth),
-
-      //           //About me
-      //           buildBigTitle("About Me"),
-
-      //           const SizedBox(
-      //             height: 12,
-      //           ),
-
-      //           MobileAboutmePage(),
-
-      //           buildDivider(),
-
-      //           //Policy
-      //           buildBigTitle("Policy"),
-
-      //           const SizedBox(
-      //             height: 12,
-      //           ),
-
-      //           MobilePolicyPage(
-      //               isJP: isJP,
-      //               deviceWidth: deviceWidth,
-      //               deviceHeight: deviceHeight),
-
-      //           const SizedBox(
-      //             height: 30,
-      //           ),
-
-      //           Align(
-      //             alignment: Alignment.center,
-      //             child: Text(
-      //               "(c) 2021 Mizuno Hikaru",
-      //               style: TextStyle(
-      //                 fontSize: 13,
-      //                 color: Colors.black.withOpacity(0.5),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.white60,
+      //   elevation: 12,
+      //   title: const Text(
+      //     "Mizuno Hikaru",
+      //     style: TextStyle(
+      //         fontWeight: FontWeight.w500, fontSize: 27, color: Colors.black),
+      //   ),
+      //   leading: IconButton(
+      //     onPressed: () {
+      //       Navigator.of(context).push(
+      //         PageRouteBuilder(
+      //           pageBuilder: (context, animation, secondaryAnimation) {
+      //             return MobileContactPage();
+      //           },
+      //           transitionDuration: Duration(seconds: 3),
+      //           reverseTransitionDuration: Duration(seconds: 3),
+      //           transitionsBuilder:
+      //               (context, animation, secondaryAnimation, child) {
+      //             final color = ColorTween(
+      //               begin: Colors.transparent,
+      //               end: Colors.black, // ブラックアウト
+      //               // end: Colors.white, // ホワイトアウト
+      //             ).animate(CurvedAnimation(
+      //               parent: animation,
+      //               // 前半
+      //               curve: Interval(
+      //                 0.0,
+      //                 0.5,
+      //                 curve: Curves.easeInOut,
       //               ),
-      //             ),
-      //           ),
-
-      //           const SizedBox(
-      //             height: 20,
-      //           ),
-      //         ],
-      //       ),
+      //             ));
+      //             final opacity = Tween<double>(
+      //               begin: 0.0,
+      //               end: 1.0,
+      //             ).animate(CurvedAnimation(
+      //               parent: animation,
+      //               // 後半
+      //               curve: Interval(
+      //                 0.5,
+      //                 1.0,
+      //                 curve: Curves.easeInOut,
+      //               ),
+      //             ));
+      //             return AnimatedBuilder(
+      //               animation: animation,
+      //               builder: (context, child) {
+      //                 return Container(
+      //                   color: color.value,
+      //                   child: Opacity(
+      //                     opacity: opacity.value,
+      //                     child: child,
+      //                   ),
+      //                 );
+      //               },
+      //               child: child,
+      //             );
+      //           },
+      //         ),
+      //       );
+      //     },
+      //     icon: Icon(
+      //       Icons.mail,
+      //       size: 35,
       //     ),
       //   ),
+      //   actions: [
+      //     GestureDetector(
+      //       onTap: () {
+      //         GithubURL();
+      //       },
+      //       child: Image.asset('assets/app/github_icon.png'),
+      //     ),
+      //     GestureDetector(
+      //       onTap: () {
+      //         storeAppleURL();
+      //       },
+      //       child: Image.asset('assets/app/apple_store_icon.png'),
+      //     ),
+      //     GestureDetector(
+      //       onTap: () {
+      //         storeAndroidURL();
+      //       },
+      //       child: Image.asset('assets/app/play_storeicon.png'),
+      //     ),
+      //   ],
       // ),
+
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                //Services
+                buildBigTitle("Services"),
+                const SizedBox(
+                  height: 12,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    buildSkillCard("Flutter", "モバイルアプリやWebサイトの開発に用います。",
+                        "assets/app/flutter_icon.png"),
+                    buildSkillCard("Firebase", "ログイン機能や画像、動画の保存に用います。",
+                        "assets/app/firebase_icon.png"),
+                  ],
+                ),
+
+                const SizedBox(
+                  height: 12,
+                ),
+                // buildSkillCard_Large(),
+
+                buildDivider(),
+
+                //Products
+                buildBigTitle("Products"),
+
+                const SizedBox(
+                  height: 12,
+                ),
+
+                MobileProductPage(deviceWidth),
+
+                //About me
+                buildBigTitle("About Me"),
+
+                const SizedBox(
+                  height: 12,
+                ),
+
+                MobileAboutmePage(),
+
+                buildDivider(),
+
+                //Policy
+                buildBigTitle("Policy"),
+
+                const SizedBox(
+                  height: 12,
+                ),
+
+                MobilePolicyPage(
+                    isJP: isJP,
+                    deviceWidth: deviceWidth,
+                    deviceHeight: deviceHeight),
+
+                const SizedBox(
+                  height: 30,
+                ),
+
+                Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    "(c) 2021 Mizuno Hikaru",
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: Colors.black.withOpacity(0.5),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(
+                  height: 20,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 
