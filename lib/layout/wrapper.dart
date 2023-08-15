@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../pages/mobile/M_contact_page.dart';
+import 'M_home_page.dart';
 
 class Wrapper extends StatelessWidget {
   const Wrapper({super.key});
@@ -14,7 +14,7 @@ class Wrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     return SelectionArea(
       child: LayoutBuilder(builder: (context, constraints) {
-        return isDesktopScreen(context) ? MobileContactPage() : MobileContactPage();
+        return isDesktopScreen(context) ? MobileHomePage() : MobileHomePage();
       }),
     );
   }
