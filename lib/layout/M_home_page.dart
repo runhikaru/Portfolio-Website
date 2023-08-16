@@ -267,11 +267,11 @@ class _MobileHomePageState extends State<MobileHomePage> {
   Widget buildSkillCard_Large() {
     return Card(
       elevation: 10.0,
+      color: Colors.white,
       child: Container(
         height: 180,
         width: deviceWidth,
         margin: const EdgeInsets.all(10.0),
-        color: Colors.white,
         child: Row(
           children: [
             Container(
@@ -321,9 +321,6 @@ class _MobileHomePageState extends State<MobileHomePage> {
     return Container(
         width: double.infinity,
         height: 100,
-        decoration: BoxDecoration(
-          color: Colors.white,
-        ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
