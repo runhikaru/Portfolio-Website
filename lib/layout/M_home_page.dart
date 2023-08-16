@@ -99,16 +99,12 @@ class _MobileHomePageState extends State<MobileHomePage> {
             size: 35,
           ),
         ),
-        actions: [
-          FadeAnimation(
-            delay: 1,
-            child: GestureDetector(
+        actions: [GestureDetector(
               onTap: () {
                 GithubURL();
               },
               child: Image.asset('assets/app/github_icon.png'),
             ),
-          ),
           GestureDetector(
             onTap: () {
               storeAppleURL();
