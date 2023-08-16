@@ -8,7 +8,7 @@ class DesktopAboutmePage extends StatelessWidget {
     return Row(children: [
       Text("私は、モバイルアプリのフロントエンドとバックエンドのプログラマーです。" +
           "\n\n2019年にFlutterとUnityを使ったモバイルアプリの開発を始めました。" +
-          "\n\n0から作ったいくつかのアプリをストアに公開し、広告収入で月20万を売り上げました。"),
+          "\n\n0から作ったいくつかのアプリをストアに公開し、広告収入で月20万を売り上げました。",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w300),),
       Image.asset("assets/face.png")
     ]);
   }

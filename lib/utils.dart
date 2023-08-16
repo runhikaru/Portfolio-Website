@@ -2,6 +2,9 @@ import 'package:url_launcher/url_launcher.dart';
 
 //Github
 const github = 'https://github.com/runhikaru';
+const githubTranslation = 'https://github.com/runhikaru/AI-Translation-App';
+const githubFood = 'https://github.com/runhikaru/Food-UI-Demo';
+const githubTravel = 'https://github.com/runhikaru/Travel-UI-Demo';
 
 // Android App URL----------------------------------------------------------------
 
@@ -102,3 +105,15 @@ Future<void> escTanabataIOSURL() async => await canLaunch(escTanabataAppIOS)
 Future<void> GithubURL() async => await canLaunch(github)
     ? await launch(github)
     : throw 'Could not launch $github';
+
+Future<void> GithubTranslationURL() async => await canLaunch(githubTranslation)
+    ? await launch(githubTranslation)
+    : throw 'Could not launch $githubTranslation';
+
+Future<void> GithubFoodURL() async => await canLaunch(githubFood)
+    ? await launch(githubFood)
+    : throw 'Could not launch $githubFood';
+
+Future<void> GithubTravelURL() async => await canLaunch(githubTravel)
+    ? await launch(githubTravel)
+    : throw 'Could not launch $githubTravel';

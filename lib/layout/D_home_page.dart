@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_website/pages/desktop/D_developer_page.dart';
 import 'package:portfolio_website/pages/desktop/D_policy_page.dart';
+import 'package:portfolio_website/pages/desktop/D_project_page.dart';
 import 'package:portfolio_website/utils.dart';
 
 import '../pages/desktop/D_contact_page.dart';
@@ -26,8 +27,6 @@ class _DesktopHomePageState extends State<DesktopHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    const enStyle = TextStyle(
-        fontWeight: FontWeight.w500, fontSize: 17, color: Colors.grey);
 
     return Scaffold(
       appBar: AppBar(
@@ -164,6 +163,19 @@ class _DesktopHomePageState extends State<DesktopHomePage> {
 
                 DesktopAboutmePage(),
 
+                const SizedBox(
+                  height: 30,
+                ),
+
+                //Projects
+                buildBigTitle("Projects"),
+
+                DesktopProjectPage(deviceWidth, deviceHeight),
+
+                const SizedBox(
+                  height: 30,
+                ),
+
                 //PrivacyPolicy
                 buildBigTitle("PrivacyPolicy"),
 
@@ -202,7 +214,7 @@ class _DesktopHomePageState extends State<DesktopHomePage> {
     return Card(
       elevation: 10.0,
       child: Container(
-        height: 240,
+        height: 260,
         width: deviceWidth / 3.6,
         margin: const EdgeInsets.all(10.0),
         child: Column(
@@ -214,14 +226,16 @@ class _DesktopHomePageState extends State<DesktopHomePage> {
               title,
               textAlign: TextAlign.center,
               style: const TextStyle(
-                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                fontSize: 24,
               ),
             ),
             Text(
               description,
               textAlign: TextAlign.center,
               style: const TextStyle(
-                fontSize: 12,
+                fontWeight: FontWeight.w300,
+                fontSize: 16,
               ),
             ),
             const Spacer(),
@@ -253,14 +267,14 @@ Container buildBigTitle(String title) {
               Text(
                 title,
                 style: TextStyle(
-                    fontSize: 57,
+                    fontSize: 73,
                     fontWeight: FontWeight.w600,
                     color: Color.fromARGB(43, 235, 192, 255)),
               ),
               Text(
                 title,
                 style: TextStyle(
-                    fontSize: 26,
+                    fontSize: 42,
                     fontWeight: FontWeight.w600,
                     color: Color.fromARGB(255, 86, 86, 86)),
               ),

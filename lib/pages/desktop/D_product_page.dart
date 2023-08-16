@@ -17,9 +17,9 @@ class DesktopProductPage extends StatefulWidget {
 }
 
 class _DesktopProductPageState extends State<DesktopProductPage> {
-  final titleStyle = TextStyle(fontWeight: FontWeight.w700, fontSize: 27);
+  final titleStyle = TextStyle(fontWeight: FontWeight.w700, fontSize: 31);
 
-  final subStyle = TextStyle(fontWeight: FontWeight.w300, fontSize: 17);
+  final subStyle = TextStyle(fontWeight: FontWeight.w300, fontSize: 16);
 
   @override
   Widget build(BuildContext context) {

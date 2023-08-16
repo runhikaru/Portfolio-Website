@@ -186,6 +186,7 @@ class _DesktopPolicyPageState extends State<DesktopPolicyPage> {
   Widget buildText(String text) {
     return Text(text,
         style: const TextStyle(
+          fontSize: 14,
           color: Color.fromARGB(255, 96, 96, 96),
         ));
   }

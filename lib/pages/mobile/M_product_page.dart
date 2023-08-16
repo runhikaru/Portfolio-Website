@@ -14,7 +14,7 @@ class MobileProductPage extends StatefulWidget {
 class _MobileProductPageState extends State<MobileProductPage> {
   final titleStyle = TextStyle(fontWeight: FontWeight.w600, fontSize: 27);
 
-  final subStyle = TextStyle(fontWeight: FontWeight.w300, fontSize: 20);
+  final subStyle = TextStyle(fontWeight: FontWeight.w300, fontSize: 15);
 
   @override
   Widget build(BuildContext context) {

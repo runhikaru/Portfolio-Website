@@ -10,7 +10,7 @@ class MobileAboutmePage extends StatelessWidget {
         "私は、モバイルアプリのフロントエンドとバックエンドのプログラマーです。" +
             "\n\n2019年にFlutterとUnityを使ったモバイルアプリの開発を始めました。" +
             "0から作ったいくつかのアプリをストアに公開し、広告収入で月20万を売り上げました。",
-        style: TextStyle(fontSize: 14),
+        style: TextStyle(fontSize: 15,fontWeight: FontWeight.w300),
       ),
       const SizedBox(
         height: 36,

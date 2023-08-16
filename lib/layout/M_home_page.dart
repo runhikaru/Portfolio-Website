@@ -5,6 +5,7 @@ import '../pages/mobile/M_contact_page.dart';
 import '../pages/mobile/M_developer_page.dart';
 import '../pages/mobile/M_policy_page.dart';
 import '../pages/mobile/M_product_page.dart';
+import '../pages/mobile/M_project_page.dart';
 import '../utils.dart';
 import '../widget/fade_animation.dart';
 
@@ -99,12 +100,13 @@ class _MobileHomePageState extends State<MobileHomePage> {
             size: 35,
           ),
         ),
-        actions: [GestureDetector(
-              onTap: () {
-                GithubURL();
-              },
-              child: Image.asset('assets/app/github_icon.png'),
-            ),
+        actions: [
+          GestureDetector(
+            onTap: () {
+              GithubURL();
+            },
+            child: Image.asset('assets/app/github_icon.png'),
+          ),
           GestureDetector(
             onTap: () {
               storeAppleURL();
@@ -166,6 +168,17 @@ class _MobileHomePageState extends State<MobileHomePage> {
                 ),
 
                 MobileAboutmePage(),
+
+                buildDivider(),
+
+                //Projects
+                buildBigTitle("Projects"),
+
+                const SizedBox(
+                  height: 12,
+                ),
+
+                MobileProjectPage(deviceWidth),
 
                 buildDivider(),
 
@@ -232,6 +245,7 @@ class _MobileHomePageState extends State<MobileHomePage> {
               description,
               textAlign: TextAlign.center,
               style: const TextStyle(
+                fontWeight: FontWeight.w300,
                 fontSize: 14,
               ),
             ),
@@ -273,6 +287,7 @@ class _MobileHomePageState extends State<MobileHomePage> {
                     "・オンラインFPSゲーム・3人称RPGゲーム・ARゲーム・2Dハイカジュなどの幅広いジャンルに対応して、開発ができます。",
                     textAlign: TextAlign.center,
                     style: TextStyle(
+                      fontWeight: FontWeight.w300,
                       fontSize: 14,
                     ),
                   ),
