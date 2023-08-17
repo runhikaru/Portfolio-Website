@@ -5,6 +5,7 @@ const github = 'https://github.com/runhikaru';
 const githubTranslation = 'https://github.com/runhikaru/AI-Translation-App';
 const githubFood = 'https://github.com/runhikaru/Food-UI-Demo';
 const githubTravel = 'https://github.com/runhikaru/Travel-UI-Demo';
+const githubMemo = 'https://github.com/runhikaru/Local-Auth-Memo-App';
 
 // Android App URL----------------------------------------------------------------
 
@@ -117,3 +118,7 @@ Future<void> GithubFoodURL() async => await canLaunch(githubFood)
 Future<void> GithubTravelURL() async => await canLaunch(githubTravel)
     ? await launch(githubTravel)
     : throw 'Could not launch $githubTravel';
+
+    Future<void> GithubMemoURL() async => await canLaunch(githubMemo)
+    ? await launch(githubMemo)
+    : throw 'Could not launch $githubMemo';

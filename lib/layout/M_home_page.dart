@@ -37,7 +37,7 @@ class _MobileHomePageState extends State<MobileHomePage> {
         title: const Text(
           "Mizuno Hikaru",
           style: TextStyle(
-              fontWeight: FontWeight.w500, fontSize: 27, color: Colors.black),
+              fontWeight: FontWeight.w500, fontSize: 17, color: Colors.black),
         ),
         iconTheme: IconThemeData(
           color: Colors.black,

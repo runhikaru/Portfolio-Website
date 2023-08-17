@@ -76,6 +76,64 @@ class _DesktopProjectPageState extends State<DesktopProjectPage> {
             ),
           ),
         ),
+        const SizedBox(
+          height: 12,
+        ),
+        Card(
+          elevation: 10.0,
+          child: Container(
+            height: widget.height * 0.9,
+            width: double.infinity,
+            margin: const EdgeInsets.all(10.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Image.asset(
+                  "assets/app/images/ui12.png",
+                  filterQuality: FilterQuality.medium,
+                  width: widget.width * 0.3,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "メモ帳 顔認証",
+                      style: titleStyle,
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    SizedBox(
+                      height: 70,
+                      width: 190,
+                      child: OutlinedButton(
+                        child: const Text(
+                          'github repo  ->',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                        clipBehavior: Clip.antiAlias,
+                        style: OutlinedButton.styleFrom(
+                          primary: Colors.black,
+                          shape: const StadiumBorder(),
+                          side: const BorderSide(color: Colors.black, width: 3),
+                        ),
+                        onPressed: GithubMemoURL,
+                      ),
+                    ),
+                  ],
+                ),
+                Image.asset(
+                  "assets/app/images/ui13.png",
+                  filterQuality: FilterQuality.medium,
+                  width: widget.width * 0.3,
+                ),
+              ],
+            ),
+          ),
+        ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 12),
           child: buildGithubCard(
