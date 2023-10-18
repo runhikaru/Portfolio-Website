@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_website/widget/subtitle_widget.dart';
 
 import '../../utils.dart';
 
@@ -21,107 +22,119 @@ class _DesktopProjectPageState extends State<DesktopProjectPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Image.asset(
-                "assets/app/images/ui10.png",
-                filterQuality: FilterQuality.medium,
-                width: widget.width * 0.3,
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "AI 翻訳アプリ",
-                    style: titleStyle,
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  SizedBox(
-                    height: 70,
-                    width: 190,
-                    child: OutlinedButton(
-                      child: const Text(
-                        'github repo  ->',
-                        style: TextStyle(fontSize: 16, color: Colors.white),
-                      ),
-                      clipBehavior: Clip.antiAlias,
-                      style: OutlinedButton.styleFrom(
-                        primary: Colors.white,
-                        shape: const StadiumBorder(),
-                        side: const BorderSide(color: Colors.white, width: 3),
-                      ),
-                      onPressed: GithubTranslationURL,
+    return SafeArea(
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            SubtitleText(subtitle: "Projects"),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Image.asset(
+                  "assets/app/images/ui10.png",
+                  filterQuality: FilterQuality.medium,
+                  height: widget.height / 1.2,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "AI 翻訳アプリ",
+                      style: titleStyle,
                     ),
-                  ),
-                ],
-              ),
-              Image.asset(
-                "assets/app/images/ui11.png",
-                filterQuality: FilterQuality.medium,
-                width: widget.width * 0.3,
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 12,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Image.asset(
-                "assets/app/images/ui12.png",
-                filterQuality: FilterQuality.medium,
-                width: widget.width * 0.3,
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "メモ帳 顔認証",
-                    style: titleStyle,
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  SizedBox(
-                    height: 70,
-                    width: 190,
-                    child: OutlinedButton(
-                      child: const Text(
-                        'github repo  ->',
-                        style: TextStyle(fontSize: 16, color: Colors.white),
-                      ),
-                      clipBehavior: Clip.antiAlias,
-                      style: OutlinedButton.styleFrom(
-                        shape: const StadiumBorder(),
-                        side: const BorderSide(color: Colors.white, width: 3),
-                      ),
-                      onPressed: GithubMemoURL,
+                    const SizedBox(
+                      height: 30,
                     ),
-                  ),
-                ],
-              ),
-              Image.asset(
-                "assets/app/images/ui13.png",
-                filterQuality: FilterQuality.medium,
-                width: widget.width * 0.3,
-              ),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 12),
-            child: buildGithubCard(
+                    SizedBox(
+                      height: 70,
+                      width: 190,
+                      child: OutlinedButton(
+                        child: const Text(
+                          'github repo  ->',
+                          style: TextStyle(fontSize: 16, color: Colors.white),
+                        ),
+                        clipBehavior: Clip.antiAlias,
+                        style: OutlinedButton.styleFrom(
+                          primary: Colors.white,
+                          shape: const StadiumBorder(),
+                          side: const BorderSide(color: Colors.white, width: 3),
+                        ),
+                        onPressed: GithubTranslationURL,
+                      ),
+                    ),
+                  ],
+                ),
+                Image.asset(
+                  "assets/app/images/ui11.png",
+                  filterQuality: FilterQuality.medium,
+                  height: widget.height / 1.2,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 60,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Image.asset(
+                  "assets/app/images/ui12.png",
+                  filterQuality: FilterQuality.medium,
+                  height: widget.height / 1.2,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "メモ帳 顔認証",
+                      style: titleStyle,
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    SizedBox(
+                      height: 70,
+                      width: 190,
+                      child: OutlinedButton(
+                        child: const Text(
+                          'github repo  ->',
+                          style: TextStyle(fontSize: 16, color: Colors.white),
+                        ),
+                        clipBehavior: Clip.antiAlias,
+                        style: OutlinedButton.styleFrom(
+                          shape: const StadiumBorder(),
+                          side: const BorderSide(color: Colors.white, width: 3),
+                        ),
+                        onPressed: GithubMemoURL,
+                      ),
+                    ),
+                  ],
+                ),
+                Image.asset(
+                  "assets/app/images/ui13.png",
+                  filterQuality: FilterQuality.medium,
+                  height: widget.height / 1.2,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 60,
+            ),
+            buildGithubCard(
                 "assets/app/images/ui1.png", "旅行予約アプリ", GithubTravelURL),
-          ),
-          buildGithubCard(
-              "assets/app/images/ui2.png", "デリバリーアプリ", GithubFoodURL),
-        ],
+            const SizedBox(
+              height: 60,
+            ),
+            buildGithubCard(
+                "assets/app/images/ui2.png", "デリバリーアプリ", GithubFoodURL),
+            const SizedBox(
+              height: 80,
+            )
+          ],
+        ),
       ),
     );
   }
@@ -133,7 +146,7 @@ class _DesktopProjectPageState extends State<DesktopProjectPage> {
           image,
           filterQuality: FilterQuality.medium,
           // fit: BoxFit.fitWidth,
-          width: widget.width * 0.8,
+          height: widget.height / 1.7,
         ),
         const SizedBox(
           height: 12,

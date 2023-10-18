@@ -223,10 +223,10 @@ class _ScreensExampleState extends State<_ScreensExample> {
         switch (widget.controller.selectedIndex) {
           case 0:
             return widget.mobile
-                ? MobileProductPage(deviceWidth)
+                ? MobileProductPage(deviceWidth, deviceHeight)
                 : DesktopProductPage(deviceWidth, deviceHeight);
           case 1:
-            return widget.mobile ? MobileAboutmePage() : DesktopAboutmePage();
+            return widget.mobile ? MobileAboutmePage() : DesktopAboutmePage(deviceWidth, deviceHeight);
           case 2:
             return widget.mobile
                 ? MobileProjectPage(deviceWidth)

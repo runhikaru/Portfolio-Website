@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:portfolio_website/widget/subtitle_widget.dart';
 
-import '../../utils.dart';
-
 class MobileContactPage extends StatefulWidget {
   const MobileContactPage({super.key});
 
@@ -41,93 +39,91 @@ class _MobileContactPageState extends State<MobileContactPage> {
           body: SafeArea(
             child: Form(
               key: _formKey,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    SubtitleText(subtitle: "Contact"),
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      SubtitleText(subtitle: "Contact"),
 
-                    const SizedBox(
-                      height: 30,
-                    ),
+                      const SizedBox(
+                        height: 30,
+                      ),
 
-                    // MContactPage(deviceWidth),
-
-                    // Mail
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: deviceWidth * 0.05, vertical: 10),
-                      child: buildTextField(
+                      // Mail
+                      buildTextField(
                           title: 'お名前',
                           controller: nameCont,
                           hint: '山田太郎　または　会社名'),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: deviceWidth * 0.05, vertical: 10),
-                      child: emailTextField(
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      emailTextField(
                           title: 'メールアドレス',
                           controller: emailCont,
                           hint: 'example@mail.com'),
-                    ),
-                    // Padding(
-                    //   padding: EdgeInsets.symmetric(
-                    //       horizontal: deviceWidth * 0.05, vertical: 10),
-                    //   child: buildTextField(
-                    //       title: '件名', controller: subjectCont, hint: 'アプリ開発の依頼'),
-                    // ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: deviceWidth * 0.05, vertical: 10),
-                      child: contentTextField(
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      // Padding(
+                      //   padding: EdgeInsets.symmetric(
+                      //       horizontal: deviceWidth * 0.05, vertical: 10),
+                      //   child: buildTextField(
+                      //       title: '件名', controller: subjectCont, hint: 'アプリ開発の依頼'),
+                      // ),
+                      contentTextField(
                           title: '内容', controller: messageCont, hint: ''),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        if (_formKey.currentState!.validate()) {
-                          setState(() {
-                            sendEmail(
-                                name: nameCont.text,
-                                email: emailCont.text,
-                                message: messageCont.text);
-                          });
-                          // showSnackBar();
-                          resetContact();
-                        }
-                      },
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 200),
-                        height: 48,
-                        width: 200,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(40),
-                            gradient: const LinearGradient(colors: [
-                              Color.fromARGB(255, 216, 216, 216),
-                              Color.fromARGB(255, 92, 92, 92),
-                            ]),
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Color.fromARGB(255, 216, 216, 216)
-                                      .withOpacity(.6),
-                                  spreadRadius: 1,
-                                  blurRadius: 16,
-                                  offset: const Offset(8, 8))
-                            ]),
-                        child: const Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              "送信",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
+                      const SizedBox(
+                        height: 40,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          if (_formKey.currentState!.validate()) {
+                            setState(() {
+                              sendEmail(
+                                  name: nameCont.text,
+                                  email: emailCont.text,
+                                  message: messageCont.text);
+                            });
+                            // showSnackBar();
+                            resetContact();
+                          }
+                        },
+                        child: AnimatedContainer(
+                          duration: const Duration(milliseconds: 200),
+                          height: 48,
+                          width: 200,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(40),
+                              gradient: const LinearGradient(colors: [
+                                Color.fromARGB(255, 216, 216, 216),
+                                Color.fromARGB(255, 92, 92, 92),
+                              ]),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Color.fromARGB(255, 216, 216, 216)
+                                        .withOpacity(.6),
+                                    spreadRadius: 1,
+                                    blurRadius: 16,
+                                    offset: const Offset(8, 8))
+                              ]),
+                          child: const Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                "送信",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -178,7 +174,7 @@ class _MobileContactPageState extends State<MobileContactPage> {
             TextSpan(
               text: title,
               style: const TextStyle(
-                  color: Color.fromARGB(255, 96, 96, 96),
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 17),
             ),
@@ -186,30 +182,35 @@ class _MobileContactPageState extends State<MobileContactPage> {
           const SizedBox(
             height: 10,
           ),
-          TextFormField(
-            autofocus: true,
-            validator: (value) {
-              if (value!.isEmpty) {
-                return '入力してください';
-              }
-              return null;
-            },
-            decoration: InputDecoration(
-              filled: true,
-              fillColor: Colors.white,
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
-              hintText: hint,
-              hintStyle: const TextStyle(color: Colors.grey),
-              errorStyle: const TextStyle(
-                  color: Color.fromARGB(255, 250, 88, 76), fontSize: 13),
+          Container(
+            width: 350,
+            child: TextFormField(
+              autofocus: true,
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return '入力してください';
+                }
+                return null;
+              },
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
+                hintText: hint,
+                hintStyle: const TextStyle(color: Colors.grey),
+                errorStyle: const TextStyle(
+                    color: Color.fromARGB(255, 250, 88, 76), fontSize: 13),
+              ),
+              controller: controller,
+              enabled: true,
+              style: const TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14),
+              textInputAction: TextInputAction.next,
+              autofillHints: const [AutofillHints.name],
             ),
-            controller: controller,
-            enabled: true,
-            style: const TextStyle(
-                color: Colors.black, fontWeight: FontWeight.bold, fontSize: 14),
-            textInputAction: TextInputAction.next,
-            autofillHints: const [AutofillHints.name],
           ),
         ],
       );
@@ -228,7 +229,7 @@ class _MobileContactPageState extends State<MobileContactPage> {
             TextSpan(
               text: title,
               style: const TextStyle(
-                  color: Color.fromARGB(255, 96, 96, 96),
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 17),
             ),
@@ -236,34 +237,37 @@ class _MobileContactPageState extends State<MobileContactPage> {
           const SizedBox(
             height: 10,
           ),
-          TextFormField(
-            controller: controller,
-            decoration: InputDecoration(
-              filled: true,
-              fillColor: Colors.white,
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
-              hintText: 'example@mail.com',
-              hintStyle: const TextStyle(color: Colors.grey),
-              errorStyle: const TextStyle(
-                  color: Color.fromARGB(255, 250, 88, 76), fontSize: 13),
-            ),
-            validator: (value) {
-              const pattern =
-                  r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)';
-              final regExp = RegExp(pattern);
+          Container(
+            width: 350,
+            child: TextFormField(
+              controller: controller,
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
+                hintText: 'example@mail.com',
+                hintStyle: const TextStyle(color: Colors.grey),
+                errorStyle: const TextStyle(
+                    color: Color.fromARGB(255, 250, 88, 76), fontSize: 13),
+              ),
+              validator: (value) {
+                const pattern =
+                    r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)';
+                final regExp = RegExp(pattern);
 
-              if (value!.isEmpty) {
-                return '入力してください';
-              } else if (!regExp.hasMatch(value)) {
-                return '無効なメールアドレスです';
-              } else {
-                return null;
-              }
-            },
-            keyboardType: TextInputType.emailAddress,
-            textInputAction: TextInputAction.next,
-            autofillHints: const [AutofillHints.email],
+                if (value!.isEmpty) {
+                  return '入力してください';
+                } else if (!regExp.hasMatch(value)) {
+                  return '無効なメールアドレスです';
+                } else {
+                  return null;
+                }
+              },
+              keyboardType: TextInputType.emailAddress,
+              textInputAction: TextInputAction.next,
+              autofillHints: const [AutofillHints.email],
+            ),
           )
         ],
       );
@@ -282,7 +286,7 @@ class _MobileContactPageState extends State<MobileContactPage> {
             TextSpan(
               text: title,
               style: const TextStyle(
-                  color: Color.fromARGB(255, 96, 96, 96),
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 17),
             ),
@@ -290,26 +294,29 @@ class _MobileContactPageState extends State<MobileContactPage> {
           const SizedBox(
             height: 10,
           ),
-          TextFormField(
-              controller: controller,
-              maxLines: maxLines,
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.white,
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
-                hintText: '〇月〇日〇時にお話しできる。\n⬜️のようなアプリ',
-                hintStyle: const TextStyle(color: Colors.grey),
-                errorStyle: const TextStyle(
-                    color: Color.fromARGB(255, 250, 88, 76), fontSize: 13),
-              ),
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return '入力してください';
-                }
-                return null;
-              },
-              textInputAction: TextInputAction.done)
+          Container(
+            width: 350,
+            child: TextFormField(
+                controller: controller,
+                maxLines: maxLines,
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(6)),
+                  hintText: '〇月〇日〇時にお話しできる。\n⬜️のようなアプリ',
+                  hintStyle: const TextStyle(color: Colors.grey),
+                  errorStyle: const TextStyle(
+                      color: Color.fromARGB(255, 250, 88, 76), fontSize: 13),
+                ),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return '入力してください';
+                  }
+                  return null;
+                },
+                textInputAction: TextInputAction.done),
+          )
         ],
       );
 }

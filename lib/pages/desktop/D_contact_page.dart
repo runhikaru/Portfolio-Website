@@ -37,29 +37,33 @@ class _DesktopContactPageState extends State<DesktopContactPage> {
   Widget build(BuildContext context) => GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
+          backgroundColor: Colors.transparent,
           body: SafeArea(
             child: Form(
               key: _formKey,
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                     SubtitleText(subtitle: "Contact"),
-                    const SizedBox(height: 20),
+                    SubtitleText(subtitle: "Contact"),
+                    const SizedBox(height: 30),
                     // Mail
                     buildTextField(
                       title: 'お名前',
                       controller: nameCont,
                       hint: '山田太郎　または　会社名',
                     ),
+                    const SizedBox(height: 30),
                     emailTextField(
                         title: 'メールアドレス',
                         controller: emailCont,
                         hint: 'example@mail.com'),
+                    const SizedBox(height: 30),
                     contentTextField(
                       title: '内容',
                       controller: messageCont,
                       hint: '',
                     ),
+                    const SizedBox(height: 60),
                     GestureDetector(
                       onTap: () {
                         if (_formKey.currentState!.validate()) {
@@ -84,7 +88,7 @@ class _DesktopContactPageState extends State<DesktopContactPage> {
                             ]),
                             boxShadow: [
                               BoxShadow(
-                                  color:  Color.fromARGB(255, 216, 216, 216)
+                                  color: Color.fromARGB(255, 216, 216, 216)
                                       .withOpacity(.6),
                                   spreadRadius: 1,
                                   blurRadius: 16,
@@ -156,38 +160,43 @@ class _DesktopContactPageState extends State<DesktopContactPage> {
             TextSpan(
               text: title,
               style: const TextStyle(
-                  color: Color.fromARGB(255, 96, 96, 96),
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  fontSize: 17),
+                  fontSize: 20),
             ),
           ])),
           const SizedBox(
             height: 10,
           ),
-          TextFormField(
-            autofocus: true,
-            validator: (value) {
-              if (value!.isEmpty) {
-                return '入力してください';
-              }
-              return null;
-            },
-            decoration: InputDecoration(
-              filled: true,
-              fillColor: Colors.white,
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
-              hintText: hint,
-              hintStyle: const TextStyle(color: Colors.grey),
-              errorStyle: const TextStyle(
-                  color: Color.fromARGB(255, 250, 88, 76), fontSize: 13),
+          Container(
+            width: widget.width / 2.4,
+            child: TextFormField(
+              autofocus: true,
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return '入力してください';
+                }
+                return null;
+              },
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
+                hintText: hint,
+                hintStyle: const TextStyle(color: Colors.grey),
+                errorStyle: const TextStyle(
+                    color: Color.fromARGB(255, 250, 88, 76), fontSize: 13),
+              ),
+              controller: controller,
+              enabled: true,
+              style: const TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14),
+              textInputAction: TextInputAction.next,
+              autofillHints: const [AutofillHints.name],
             ),
-            controller: controller,
-            enabled: true,
-            style: const TextStyle(
-                color: Colors.black, fontWeight: FontWeight.bold, fontSize: 14),
-            textInputAction: TextInputAction.next,
-            autofillHints: const [AutofillHints.name],
           ),
         ],
       );
@@ -206,42 +215,45 @@ class _DesktopContactPageState extends State<DesktopContactPage> {
             TextSpan(
               text: title,
               style: const TextStyle(
-                  color: Color.fromARGB(255, 96, 96, 96),
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  fontSize: 17),
+                  fontSize: 20),
             ),
           ])),
           const SizedBox(
             height: 10,
           ),
-          TextFormField(
-            controller: controller,
-            decoration: InputDecoration(
-              filled: true,
-              fillColor: Colors.white,
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
-              hintText: 'example@mail.com',
-              hintStyle: const TextStyle(color: Colors.grey),
-              errorStyle: const TextStyle(
-                  color: Color.fromARGB(255, 250, 88, 76), fontSize: 13),
-            ),
-            validator: (value) {
-              const pattern =
-                  r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)';
-              final regExp = RegExp(pattern);
+          Container(
+            width: widget.width / 2.4,
+            child: TextFormField(
+              controller: controller,
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
+                hintText: 'example@mail.com',
+                hintStyle: const TextStyle(color: Colors.grey),
+                errorStyle: const TextStyle(
+                    color: Color.fromARGB(255, 250, 88, 76), fontSize: 13),
+              ),
+              validator: (value) {
+                const pattern =
+                    r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)';
+                final regExp = RegExp(pattern);
 
-              if (value!.isEmpty) {
-                return '入力してください';
-              } else if (!regExp.hasMatch(value)) {
-                return '無効なメールアドレスです';
-              } else {
-                return null;
-              }
-            },
-            keyboardType: TextInputType.emailAddress,
-            textInputAction: TextInputAction.next,
-            autofillHints: const [AutofillHints.email],
+                if (value!.isEmpty) {
+                  return '入力してください';
+                } else if (!regExp.hasMatch(value)) {
+                  return '無効なメールアドレスです';
+                } else {
+                  return null;
+                }
+              },
+              keyboardType: TextInputType.emailAddress,
+              textInputAction: TextInputAction.next,
+              autofillHints: const [AutofillHints.email],
+            ),
           )
         ],
       );
@@ -260,34 +272,37 @@ class _DesktopContactPageState extends State<DesktopContactPage> {
             TextSpan(
               text: title,
               style: const TextStyle(
-                  color: Color.fromARGB(255, 96, 96, 96),
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  fontSize: 17),
+                  fontSize: 20),
             ),
           ])),
           const SizedBox(
             height: 10,
           ),
-          TextFormField(
-              controller: controller,
-              maxLines: maxLines,
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.white,
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
-                hintText: '〇月〇日〇時にお話しできる。\n⬜️のようなアプリ',
-                hintStyle: const TextStyle(color: Colors.grey),
-                errorStyle: const TextStyle(
-                    color: Color.fromARGB(255, 250, 88, 76), fontSize: 13),
-              ),
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return '入力してください';
-                }
-                return null;
-              },
-              textInputAction: TextInputAction.done)
+          Container(
+            width: widget.width / 2.4,
+            child: TextFormField(
+                controller: controller,
+                maxLines: maxLines,
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(6)),
+                  hintText: '〇月〇日〇時にお話しできる。\n⬜️のようなアプリ',
+                  hintStyle: const TextStyle(color: Colors.grey),
+                  errorStyle: const TextStyle(
+                      color: Color.fromARGB(255, 250, 88, 76), fontSize: 13),
+                ),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return '入力してください';
+                  }
+                  return null;
+                },
+                textInputAction: TextInputAction.done),
+          )
         ],
       );
 }
