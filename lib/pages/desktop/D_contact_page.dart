@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:portfolio_website/widget/subtitle_widget.dart';
 
 import '../../utils.dart';
 
@@ -36,61 +37,30 @@ class _DesktopContactPageState extends State<DesktopContactPage> {
   Widget build(BuildContext context) => GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.white60,
-            elevation: 12,
-            title: const Text(
-              "Mizuno Hikaru",
-              style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 27,
-                  color: Colors.black),
-            ),
-            centerTitle: true,
-            iconTheme: IconThemeData(color: Colors.black),
-            leading: BackButton(),
-            actions: [
-              GestureDetector(
-                  onTap: () {
-                    GithubURL();
-                  },
-                  child: Image.asset('assets/app/github_icon.png')),
-              GestureDetector(
-                  onTap: () {
-                    storeAppleURL();
-                  },
-                  child: Image.asset('assets/app/apple_store_icon.png')),
-              GestureDetector(
-                  onTap: () {
-                    storeAndroidURL();
-                  },
-                  child: Image.asset('assets/app/play_storeicon.png')),
-            ],
-          ),
-          body: Form(
-            key: _formKey,
-            child: Column(
-              children: [
-                const SizedBox(height: 20),
-                // Mail
-                buildTextField(
-                  title: 'お名前',
-                  controller: nameCont,
-                  hint: '山田太郎　または　会社名',
-                ),
-                emailTextField(
-                    title: 'メールアドレス',
-                    controller: emailCont,
-                    hint: 'example@mail.com'),
-                contentTextField(
-                  title: '内容',
-                  controller: messageCont,
-                  hint: '',
-                ),
-                Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: widget.width * 0.35, vertical: 40),
-                    child: GestureDetector(
+          body: SafeArea(
+            child: Form(
+              key: _formKey,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                     SubtitleText(subtitle: "Contact"),
+                    const SizedBox(height: 20),
+                    // Mail
+                    buildTextField(
+                      title: 'お名前',
+                      controller: nameCont,
+                      hint: '山田太郎　または　会社名',
+                    ),
+                    emailTextField(
+                        title: 'メールアドレス',
+                        controller: emailCont,
+                        hint: 'example@mail.com'),
+                    contentTextField(
+                      title: '内容',
+                      controller: messageCont,
+                      hint: '',
+                    ),
+                    GestureDetector(
                       onTap: () {
                         if (_formKey.currentState!.validate()) {
                           setState(() {
@@ -105,16 +75,16 @@ class _DesktopContactPageState extends State<DesktopContactPage> {
                       child: AnimatedContainer(
                         duration: const Duration(milliseconds: 200),
                         height: 48,
-                        width: double.infinity,
+                        width: 200,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(40),
                             gradient: const LinearGradient(colors: [
-                              Color.fromARGB(255, 235, 192, 255),
-                              Color.fromARGB(255, 210, 114, 255),
+                              Color.fromARGB(255, 216, 216, 216),
+                              Color.fromARGB(255, 92, 92, 92),
                             ]),
                             boxShadow: [
                               BoxShadow(
-                                  color: Color.fromARGB(255, 235, 192, 255)
+                                  color:  Color.fromARGB(255, 216, 216, 216)
                                       .withOpacity(.6),
                                   spreadRadius: 1,
                                   blurRadius: 16,
@@ -134,8 +104,10 @@ class _DesktopContactPageState extends State<DesktopContactPage> {
                           ],
                         ),
                       ),
-                    )),
-              ],
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
         ),

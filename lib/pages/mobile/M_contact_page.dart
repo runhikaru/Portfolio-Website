@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:portfolio_website/widget/subtitle_widget.dart';
 
 import '../../utils.dart';
 
@@ -37,160 +38,97 @@ class _MobileContactPageState extends State<MobileContactPage> {
     return GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.white60,
-            elevation: 12,
-            title: const Text(
-              "Mizuno Hikaru",
-              style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 27,
-                  color: Colors.black),
-            ),
-            centerTitle: true,
-            iconTheme: IconThemeData(color: Colors.black),
-            leading: BackButton(
-            ),
-            actions: [  GestureDetector(
-                onTap: () {
-                  GithubURL();
-                },
-                child: Image.asset('assets/app/github_icon.png')),
-          
-              GestureDetector(
-                  onTap: () {
-                    storeAppleURL();
-                  },
-                  child: Image.asset('assets/app/apple_store_icon.png')),
-              GestureDetector(
-                  onTap: () {
-                    storeAndroidURL();
-                  },
-                  child: Image.asset('assets/app/play_storeicon.png')),
-            ],
-          ),
-          body: Form(
-            key: _formKey,
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Container(
-                    width: double.infinity,
-                    height: 100,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        SizedBox(
-                          width: deviceWidth * 0.05,
-                        ),
-                        const Stack(
-                          alignment: AlignmentDirectional.bottomStart,
+          body: SafeArea(
+            child: Form(
+              key: _formKey,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    SubtitleText(subtitle: "Contact"),
+
+                    const SizedBox(
+                      height: 30,
+                    ),
+
+                    // MContactPage(deviceWidth),
+
+                    // Mail
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: deviceWidth * 0.05, vertical: 10),
+                      child: buildTextField(
+                          title: 'お名前',
+                          controller: nameCont,
+                          hint: '山田太郎　または　会社名'),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: deviceWidth * 0.05, vertical: 10),
+                      child: emailTextField(
+                          title: 'メールアドレス',
+                          controller: emailCont,
+                          hint: 'example@mail.com'),
+                    ),
+                    // Padding(
+                    //   padding: EdgeInsets.symmetric(
+                    //       horizontal: deviceWidth * 0.05, vertical: 10),
+                    //   child: buildTextField(
+                    //       title: '件名', controller: subjectCont, hint: 'アプリ開発の依頼'),
+                    // ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: deviceWidth * 0.05, vertical: 10),
+                      child: contentTextField(
+                          title: '内容', controller: messageCont, hint: ''),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        if (_formKey.currentState!.validate()) {
+                          setState(() {
+                            sendEmail(
+                                name: nameCont.text,
+                                email: emailCont.text,
+                                message: messageCont.text);
+                          });
+                          // showSnackBar();
+                          resetContact();
+                        }
+                      },
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 200),
+                        height: 48,
+                        width: 200,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(40),
+                            gradient: const LinearGradient(colors: [
+                              Color.fromARGB(255, 216, 216, 216),
+                              Color.fromARGB(255, 92, 92, 92),
+                            ]),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Color.fromARGB(255, 216, 216, 216)
+                                      .withOpacity(.6),
+                                  spreadRadius: 1,
+                                  blurRadius: 16,
+                                  offset: const Offset(8, 8))
+                            ]),
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
-                              "Contact",
+                              "送信",
                               style: TextStyle(
-                                  fontSize: 57,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color.fromARGB(43, 235, 192, 255)),
-                            ),
-                            Text(
-                              "Contact",
-                              style: TextStyle(
-                                  fontSize: 26,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color.fromARGB(255, 86, 86, 86)),
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
-                      ],
+                      ),
                     ),
-                  ),
-
-                  const SizedBox(
-                    height: 30,
-                  ),
-
-                  // MContactPage(deviceWidth),
-
-                  // Mail
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: deviceWidth * 0.05, vertical: 10),
-                    child: buildTextField(
-                        title: 'お名前',
-                        controller: nameCont,
-                        hint: '山田太郎　または　会社名'),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: deviceWidth * 0.05, vertical: 10),
-                    child: emailTextField(
-                        title: 'メールアドレス',
-                        controller: emailCont,
-                        hint: 'example@mail.com'),
-                  ),
-                  // Padding(
-                  //   padding: EdgeInsets.symmetric(
-                  //       horizontal: deviceWidth * 0.05, vertical: 10),
-                  //   child: buildTextField(
-                  //       title: '件名', controller: subjectCont, hint: 'アプリ開発の依頼'),
-                  // ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: deviceWidth * 0.05, vertical: 10),
-                    child: contentTextField(
-                        title: '内容', controller: messageCont, hint: ''),
-                  ),
-                  Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: deviceWidth * 0.3, vertical: 20),
-                      child: GestureDetector(
-                        onTap: () {
-                          if (_formKey.currentState!.validate()) {
-                            setState(() {
-                              sendEmail(
-                                  name: nameCont.text,
-                                  email: emailCont.text,
-                                  message: messageCont.text);
-                            });
-                            // showSnackBar();
-                            resetContact();
-                          }
-                        },
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 200),
-                          height: 48,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(40),
-                              gradient: const LinearGradient(colors: [
-                                Color.fromARGB(255, 235, 192, 255),
-                                Color.fromARGB(255, 210, 114, 255),
-                              ]),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Color.fromARGB(255, 235, 192, 255)
-                                        .withOpacity(.6),
-                                    spreadRadius: 1,
-                                    blurRadius: 16,
-                                    offset: const Offset(8, 8))
-                              ]),
-                          child: const Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                "送信",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                          ),
-                        ),
-                      )),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

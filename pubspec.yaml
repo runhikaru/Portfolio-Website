@@ -47,6 +47,8 @@ dependencies:
   simple_animations: ^4.0.1
   supercharged: ^2.1.1
 
+  sidebarx: ^0.16.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
