@@ -13,71 +13,6 @@ import 'package:sidebarx/sidebarx.dart';
 
 import '../utils.dart';
 
-class SidebarXExampleApp extends StatelessWidget {
-  final _controller = SidebarXController(selectedIndex: 0, extended: true);
-  final _key = GlobalKey<ScaffoldState>();
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'SidebarX Example',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        // brightness: Brightness.dark,
-        primaryColor: primaryColor,
-        canvasColor: canvasColor,
-        scaffoldBackgroundColor: scaffoldBackgroundColor,
-        textTheme: const TextTheme(
-          headlineSmall: TextStyle(
-            color: Colors.white,
-            fontSize: 46,
-            fontWeight: FontWeight.w800,
-          ),
-        ),
-      ),
-      home: Builder(
-        builder: (context) {
-          final isSmallScreen = MediaQuery.of(context).size.width < 1000;
-          return Scaffold(
-            key: _key,
-            appBar: isSmallScreen
-                ? AppBar(
-                    backgroundColor: canvasColor,
-                    leading: IconButton(
-                      onPressed: () {
-                        // if (!Platform.isAndroid && !Platform.isIOS) {
-                        //   _controller.setExtended(true);
-                        // }
-                        _key.currentState?.openDrawer();
-                      },
-                      icon: Icon(
-                        Icons.menu,
-                        color: Colors.white,
-                      ),
-                    ),
-                  )
-                : null,
-            drawer: ExampleSidebarX(controller: _controller),
-            body: Row(
-              children: [
-                if (!isSmallScreen) ExampleSidebarX(controller: _controller),
-                Expanded(
-                  child: Center(
-                    child: _ScreensExample(
-                      controller: _controller,
-                      mobile: isSmallScreen,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          );
-        },
-      ),
-    );
-  }
-}
-
 class ExampleSidebarX extends StatelessWidget {
   const ExampleSidebarX({
     Key? key,
@@ -191,8 +126,8 @@ class ExampleSidebarX extends StatelessWidget {
   }
 }
 
-class _ScreensExample extends StatefulWidget {
-  const _ScreensExample({
+class ScreensExample extends StatefulWidget {
+  const ScreensExample({
     Key? key,
     required this.controller,
     required this.mobile,
@@ -202,10 +137,10 @@ class _ScreensExample extends StatefulWidget {
   final bool mobile;
 
   @override
-  State<_ScreensExample> createState() => _ScreensExampleState();
+  State<ScreensExample> createState() => ScreensExampleState();
 }
 
-class _ScreensExampleState extends State<_ScreensExample> {
+class ScreensExampleState extends State<ScreensExample> {
   late double deviceWidth, deviceHeight;
   @override
   void didChangeDependencies() {
